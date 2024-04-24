@@ -1,0 +1,64 @@
+body{
+    background-color:bisque;
+    color:black;
+}
+.coloredDiv {
+    display: none; /* Initially hidden */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width:30%;
+    text-wrap:balance;
+    margin-left: auto;
+    margin-right: auto;
+}
+#redDiv{
+    background-color: red;
+    color: white;
+}
+#blueDiv{
+    background-color: blue;
+    color: white;
+}
+#greenDiv{
+    background-color: green;
+    color: white;
+}
+#yellowDiv{
+    background-color: yellow;
+    color: black;
+}
+
+.red {
+    background-color: red;
+    color: white;
+    
+}
+.blue {
+    background-color: blue;
+    color: white;
+}
+.yellow {
+    background-color: yellow;
+    color: black;
+}
+.green {
+    background-color: green;
+    color: white;
+}
+  .purple {
+    background-color: purple;
+    color: white;
+}
+.orange {
+    background-color: orange;
+}
+.pink{
+    background-color:#FF00BF;
+    color:black;
+
+}
+.teal{
+    background-color:#00F9FF;
+    color:black;
+}
