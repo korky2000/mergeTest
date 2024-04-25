@@ -136,3 +136,78 @@ function buttonJob(){
     generateRandomWord();
     populateWords();
 }
+
+
+document.getElementById('fileInput').addEventListener('change', function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const contents = event.target.result;
+        const { ticketNumber } = extractTicketAndWords(contents);
+        
+        // Populate the redDiv with the extracted ticket number
+        populateRed(ticketNumber);
+    };
+
+    reader.readAsText(file);
+});
+
+function populateRed(ticketNumber) {
+    // Populate the redDiv with the ticket number
+    document.getElementById('redDiv').textContent = ticketNumber;
+}
+
+document.getElementById('fileInput').addEventListener('change', function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const contents = event.target.result;
+        const ticketNumber = extractTicketAndWords(contents);
+        
+        // Populate the redDiv with the ticket number
+        populateRed(ticketNumber);
+    };
+
+    reader.readAsText(file);
+});
+
+function extractTicketAndWords(contents) {
+    // Extract text between "Ticket Number:" and the closing curly brace
+    const match = contents.match(/Ticket Number:\s*(\d+)/);
+    if (match && match[1]) {
+        return match[1];
+    } else {
+        console.error("Ticket Number not found in the file.");
+        return ''; // Return an empty string if ticket number is not found
+    }
+}
+
+function buttonPop() {
+    // Retrieve the file input element
+    const fileInput = document.getElementById('fileInput');
+
+    // Check if a file is selected
+    if (fileInput.files.length > 0) {
+        // Read the selected file
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        // Read file contents when loaded
+        reader.onload = function(event) {
+            // Extract the ticket number from the file contents
+            const contents = event.target.result;
+            const ticketNumber = extractTicketAndWords(contents);
+
+            // Populate the redDiv with the extracted ticket number
+            populateRed(ticketNumber);
+        };
+
+        // Read the file as text
+        reader.readAsText(file);
+    } else {
+        // If no file is selected, display an error message or handle it as needed
+        console.error("No file selected.");
+    }
+}
